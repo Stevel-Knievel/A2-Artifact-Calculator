@@ -1,0 +1,73 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+	int run = 1;
+	int faction = 0;
+	double seed = 0;
+	double findChance = 0;
+	double numBuildings = 0;
+	double numResets = 0;
+	double numSeconds = 0;
+	double numExchanges = 0;
+	double linLevel = 0;
+	
+	//user enters their data
+	
+	cout << "This is the A2 Artifact condition generator\n";
+	do{
+	cout << "Enter a number for the artifact you want, where AH = 0, FR = 1, EL = 2, AN = 3, GB = 4, UD = 5, DM = 6, TT = 7, DD = 8, and FC = 9, or enter 10 for all chances\n";
+	cin >> faction;
+	cout << "\nEnter your small value from Lara Crypt you want to Analyze\n";
+	cin >> seed;
+	cout << endl;
+	
+	seed = seed * 100;
+	
+		if(faction == 0 || faction == 10) {
+			findChance = round(seed * 10000000000000000.0);
+			cout << "You need an FC find chance of " << findChance <<"% to obtain the Hourglass\n";
+		}
+		if(faction == 1 || faction == 10){
+			numBuildings = ceil((seed * 200000.0) + 10000.0);
+			cout << "You need " << numBuildings << " Wizard Towers to find the Silk Cloth\n";
+		}
+		if(faction == 2 || faction == 10){
+			numResets = ceil(sqrt(seed*5000.0));
+			cout << "You need " << numResets << " Excavation resets this R to find the Raw Emerald\n";
+		}
+		if(faction == 3 || faction == 10){
+			numSeconds = round(seed * 25920000.0);
+			cout << "You need " << numSeconds <<" seconds of Angel Time, or " << (numSeconds/86400.0) << " Days to find the Fossilized Wing\n";
+		}
+		if(faction == 4 || faction == 10){
+			numBuildings = ceil(seed * 300000.0 + 10000.0);
+			cout << "You need " << numBuildings << " Slave Pens to find the Spiked Whip\n";
+		}
+		if(faction == 5 || faction == 10){
+			numSeconds = floor(pow((1.0/seed) - 30.0,1.0/1.75));
+			cout << "You have " << numSeconds << " seconds or less to find the Dusty Coffin\n";
+		}
+		if(faction == 6 || faction == 10){
+			numBuildings = ceil((seed * 200000.0) + 10000.0);
+			cout << "You need " << numBuildings << " Hall of Legends to find the Crystallized Lava\n";
+		}
+		if(faction == 7 || faction == 10){
+			numExchanges = round(sqrt(seed * 5000000000.0));
+			cout << "You need " << numExchanges << " Royal Exchanges to find the Titan Helmet\n";
+		}
+		if(faction == 8 || faction == 10){
+			linLevel = round(cbrt(seed * 2000000.0));
+			cout << "You need " << linLevel << " Levels of your current Lineage to find the Branch of Life Tree\n";
+		}
+		if(faction == 9 || faction == 10){
+			numSeconds = round(pow(seed * 20000000.0,1.0/1.5));
+			cout << "You need " << numSeconds << " seconds of Headstart time to unlock the Nightmare Figment\n";
+		}
+	cout << "Would you like to calculate another value? (1 (yes) or 0 (no))\n";
+	cin >> run;
+	}while (run == 1);
+	
+	return 0;
+}
